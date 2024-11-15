@@ -1,3 +1,5 @@
+[Link to my Blogpost](https://pumoxi.com/2024/11/15/setting-up-an-aws-vpc-with-terraform-a-step-by-step-tutorial/)
+
 # Terraform AWS Networking Setup
 
 This Terraform configuration sets up an AWS Virtual Private Cloud (VPC) with both public and private subnets across two availability zones. It includes optional deployment of a NAT Gateway, security groups, internet gateway, and routing configurations.
