@@ -13,14 +13,14 @@ resource "aws_eip" "nat_eip_az2" {
 # AWS NAT Gateway for Public Subnet Availability Zone 1
 
 resource "aws_nat_gateway" "nat_gateway_az1" {
-    allocation_id = aws_eip.nat_eip_az1
+    allocation_id = aws_eip.nat_eip_az1.allocation_id
     subnet_id = var.public_subnet_az1_id # Get the Subnet Public Subnet AZ1 from main terrafor
 }
 
 # AWS NAT Gateway for Public Subnet Availability Zone 2
 
 resource "aws_nat_gateway" "nat_gateway_az2" {
-    allocation_id = aws_eip.nat_eip_az2
+    allocation_id = aws_eip.nat_eip_az2.allocation_id
     subnet_id = var.public_subnet_az2_id # Get the Subnet Public Subnet AZ2 from main terraform
 }
 
