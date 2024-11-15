@@ -37,6 +37,38 @@ module "aws_networking_setup" {
 }
 ```
 
+As security groups requirement differs per setup, this module will only create a blank security group. Please include the configuration of security group (example as below), and customize it as per your requirement.
+
+```hcl
+resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+  security_group_id = module.aws_networking_setup.security_group_id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "tcp"
+  from_port         = 80
+  to_port           = 80
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+  security_group_id = module.aws_networking_setup.security_group_id
+  cidr_ipv4 = "0.0.0.0/0"
+  ip_protocol = "tcp"
+  from_port = 22
+  to_port = 22
+}
+
+resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+  security_group_id = module.aws_networking_setup.security_group_id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+
+resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv6" {
+  security_group_id = module.aws_networking_setup.security_group_id
+  cidr_ipv6         = "::/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+```
+
 ## Steps to Integrate
 
 1. **Add the module to your Terraform configuration**
