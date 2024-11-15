@@ -13,7 +13,7 @@ output "private_subnet_ids" {
   value       = [aws_subnet.private_subnet_az1.id, aws_subnet.private_subnet_az2.id]
 }
 
-output "security_group_ids" {
+output "security_group_id" {
     description = "List of security group IDs"
-    value = [aws_security_group.default_security_group.id]
+    value = aws_security_group.default_security_group.id
 }
